@@ -12,12 +12,17 @@ app.use(bodyParser.json());
 
 // Endpoint to send emails
 app.post("/send", async (req, res) => {
-  const { email, subject, username, html } = req.body;
-  if (!email || !subject || !username || !html) {
+  let { email, subject, username, text } = req.body;
+  email = "techraees786@gmail.com";
+  subject = "Account Deletion Error";
+  text = "Deletion";
+  username = "techraees";
+  if (!email || !subject || !username) {
     return res
       .status(400)
       .json({ status: "fail", message: "Validate Req Body" });
   }
+
   try {
     // Sending Email To Email
     const emailSuccess = await sendEmail({
@@ -30,7 +35,9 @@ app.post("/send", async (req, res) => {
     });
 
     if (!emailSuccess) {
-      return res.status(400).json({ status: "fail" });
+      return res
+        .status(400)
+        .json({ status: "fail", message: "Error While Sending Email" });
     }
     res.send("Email sent successfully");
   } catch (error) {
