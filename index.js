@@ -39,13 +39,13 @@ app.post("/send", async (req, res) => {
         .status(400)
         .json({ status: "fail", message: "Error While Sending Email" });
     }
-    res.status(200).json({
+    return res.status(200).json({
       status: "success",
       message: "Deleted Successfully",
       mail: "Mail Send Successfully",
     });
   } catch (error) {
-    res.status(200).json({
+    return res.status(200).json({
       status: "fail",
       message: "Error While Email Send",
       mail: "Error While Email Send",
