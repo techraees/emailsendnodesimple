@@ -4,14 +4,21 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const sendEmail = require("./sendEmail");
 const resetPasswordTemplateForDeletion = require("./resetPasswordTemplateForDeletion");
+const cors = require("cors");
 
 const app = express();
 
 // Middleware to parse JSON body
 app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "http://check.cartraderpk.com",
+  })
+);
 
 // Endpoint to send emails
 app.post("/send", async (req, res) => {
+  console.log(req.body);
   let { email, subject, username, text } = req.body;
   if (!email || !subject || !username) {
     return res
