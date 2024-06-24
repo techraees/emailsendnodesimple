@@ -13,10 +13,6 @@ app.use(bodyParser.json());
 // Endpoint to send emails
 app.post("/send", async (req, res) => {
   let { email, subject, username, text } = req.body;
-  email = "techraees786@gmail.com";
-  subject = "Account Deletion Error";
-  text = "Deletion";
-  username = "techraees";
   if (!email || !subject || !username) {
     return res
       .status(400)
