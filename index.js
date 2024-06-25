@@ -53,6 +53,7 @@ app.post("/send", async (req, res) => {
       message: "Error While Email Send",
       mail: "Error While Email Send",
     });
+    console.log(error)
     console.error("Error occurred while sending email", error.message);
   }
 });

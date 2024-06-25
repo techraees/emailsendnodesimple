@@ -6,18 +6,17 @@ const sendEmail = async ({ options: { email, subject, text, html } }) => {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       service: "gmail",
-      port: 535,
-      secure: true,
-      secureConnection: false,
+      port: 465, // Use port 465 for secure connections
+      secure: true, // Use true for 465, false for 587
       auth: {
-        user: "cartraderpakistan@gmail.com",
-        pass: "fswwpbvweqxptaqf",
+        user: "common.use1223@gmail.com",
+        pass: "tqhimisoxesnttur", // Use the App Password here
       },
-      tls: { rejectUnAuthorized: true },
+      tls: { rejectUnauthorized: true },
     });
 
     await transporter.sendMail({
-      from: "cartraderpakistan@gmail.com",
+      from: "common.use1223@gmail.com",
       to: email,
       subject: subject,
       text: text,
