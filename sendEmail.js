@@ -4,19 +4,19 @@ const sendEmail = async ({ options: { email, subject, text, html } }) => {
   try {
     console.log(email);
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      service: "gmail",
+      host: "mail.cartraderpk.com",
+      service: "cartraderpk",
       port: 465, // Use port 465 for secure connections
       secure: true, // Use true for 465, false for 587
       auth: {
-        user: "common.use1223@gmail.com",
-        pass: "tqhimisoxesnttur", // Use the App Password here
+        user: "info@cartraderpk.com",
+        pass: "+YfD3TVtHIQ0", // Use the App Password here
       },
       tls: { rejectUnauthorized: true },
     });
 
     await transporter.sendMail({
-      from: "common.use1223@gmail.com",
+      from: "info@cartraderpk.com",
       to: email,
       subject: subject,
       text: text,
