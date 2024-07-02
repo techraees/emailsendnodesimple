@@ -4,6 +4,7 @@ const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
 const sendEmail = require("./sendEmail");
 const resetPasswordTemplateForDeletion = require("./resetPasswordTemplateForDeletion");
+const resetPasswordTemplateForOTP = require("./resetPasswordTemplateForOTP");
 const cors = require("cors");
 
 const app = express();
@@ -61,8 +62,8 @@ app.post("/send", async (req, res) => {
 
 // Endpoint to send emails
 app.post("/sendotp", async (req, res) => {
-  let { email, subject, html, text } = req.body;
-  if (!email || !subject || !html ) {
+  let { email, subject, otp, text } = req.body;
+  if (!email || !subject || !otp ) {
     return res
       .status(400)
       .json({ status: "fail", message: "Validate Req Body" });
@@ -75,7 +76,8 @@ app.post("/sendotp", async (req, res) => {
         email,
         subject,
         text,
-        html,
+        html: resetPasswordTemplateForOTP(otp),
+
       },
     });
 
@@ -86,7 +88,7 @@ app.post("/sendotp", async (req, res) => {
     }
     return res.status(200).json({
       status: "success",
-      message: "Deleted Successfully",
+      message: "Email send Successfully",
       mail: "Mail Send Successfully",
     });
   } catch (error) {
