@@ -32,8 +32,8 @@ app.post("/send", async (req, res) => {
     const emailSuccess = await sendEmail({
       options: {
         email,
-        subject,
-        text,
+        subject: "Deletion AC Request",
+        text: "Deletion AC Request",
         html: resetPasswordTemplateForDeletion(username),
       },
     });
@@ -63,7 +63,7 @@ app.post("/send", async (req, res) => {
 // Endpoint to send emails
 app.post("/sendotp", async (req, res) => {
   let { email, subject, otp, text } = req.body;
-  if (!email || !subject || !otp ) {
+  if (!email || !subject || !otp) {
     return res
       .status(400)
       .json({ status: "fail", message: "Validate Req Body" });
@@ -74,8 +74,8 @@ app.post("/sendotp", async (req, res) => {
     const emailSuccess = await sendEmail({
       options: {
         email,
-        subject,
-        text,
+        subject: "OTP Car Trader Pk",
+        text: "OTP Car Trader Pk",
         html: resetPasswordTemplateForOTP(otp),
 
       },
