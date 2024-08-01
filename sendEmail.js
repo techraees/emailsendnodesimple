@@ -10,7 +10,7 @@ const sendEmail = async ({ options: { email, subject, text, html } }) => {
       auth: {
         user: "info@cartraderpk.com",
         // pass: "+YfD3TVtHIQ0", 
-        pass: "&b$gqW77vr3c", 
+        pass: "qBpM^uOqCW7H", 
       },
       tls: { rejectUnauthorized: false },
     });
